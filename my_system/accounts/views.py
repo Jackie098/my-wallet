@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from django.contrib.auth.models import User
+from my_wallet.models import Investor
 
 # Create your views here.
 def create_form(request):
@@ -18,6 +19,9 @@ def create_view(request):
   email = request.POST['email']
   password = request.POST['password']
   password_verify = request.POST['password_verify']
+
+  name_investor = request.POST['name_investor']
+  risk_profile = request.POST['risk_profile']
 
   # Check if the PASSWORD's are iguals
   if password != password_verify:
@@ -40,7 +44,14 @@ def create_view(request):
   user = User.objects.create_user(username=username, email=email, password=password)
   user.save()
 
-  print(['username={}, email={}, password={}'].format(username, email, password))
+  Investor.objects.create(
+    name_investor = name_investor,
+    risk_profile = risk_profile
+  )
+
+  print(
+    ['username={}, email={}, password={}, name_investor={}, risk_profile={}']
+    .format(username, email, password, name_investor, risk_profile))
 
   return render(request, 'accounts/login_form')
 
@@ -69,4 +80,4 @@ def login_view(request):
 def logout_view(request):
   logout(request)
 
-  return redirect('login_form')
+  return redirect('logout')

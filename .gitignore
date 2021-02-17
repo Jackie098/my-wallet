@@ -2,11 +2,11 @@
 
 /my_system/my_system/__pycache__/
 /my_system/accounts/__pycache__/
-/my_system//__pycache__/
+/my_system/my_wallet/__pycache__/
 /my_system//__pycache__/
 
 /my_system/accounts/migrations/__pycache__/
-/my_system//migrations/__pycache__/
+/my_system/my_wallet/migrations/__pycache__/
 /my_system//migrations/__pycache__/
 
 .vscode
