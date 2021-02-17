@@ -1,8 +1,34 @@
-<h1>
+{% extends 'base.html' %}
+<!-- <h1> -->
   <!-- Se estiver logado -->
-    RESUMO DAS POSIÇÕES
+    <!-- RESUMO DAS POSIÇÕES -->
   <!-- Senão -->
-    BEM-VINDO,
+    <!-- BEM-VINDO,
     FAÇA LOGIN PARA VER O RESUMO...
     <button>Login</button>
-</h1>
+</h1> -->
+
+{% block title %} Home - Homebroker {% endblock %}
+
+{% block content %} 
+{% if user.is_authenticated %}
+        
+{% else %}
+  <div class="container my-4">
+    <h3>Bem-vindo,</h3>
+    <br>
+    <h4>Faça <strong>LOGIN</strong> para acessar o resumo da sua carteira...</h4>
+
+    <a href="{% url 'login_form' %}" class="btn btn-outline-primary">Login</a>
+
+    <br>
+    <br>
+
+    <h4>Ainda não possui conta?</h4>
+    <a href="{% url 'create_form' %}" class="btn">Create Account</a>
+  </div>
+{% endif%}
+
+{% endblock %}
+
+{% block footer %} {% endblock %}

@@ -7,7 +7,7 @@ from my_wallet.models import Investor
 
 # Create your views here.
 def create_form(request):
-  return render(request, 'accounts/create_form')
+  return render(request, 'accounts/create_form.html')
 
 def create_view(request):
   if request.method != 'POST':
