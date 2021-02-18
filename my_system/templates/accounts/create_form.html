@@ -1,5 +1,75 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>CRIAR USUARIO</h1>
+<div class="container h-100">
+  <div class="my-4">
+    <div class="row justify-content-center align-items-center">
+      <form action="{% url 'create_view' %}" method="POST" class="col-9">
+
+        {% csrf_token %}
+
+        <h2 class="row mt-4 mb-3 justify-content-center">Register</h3>
+        <div class="row">
+          <div class="form-group col-6" name="for-username">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="username">
+          </div>
+
+          <div class="form-group col-6" name="for-email">
+            <label for="email">Email</label>
+            <input type="email"  class="form-control" name="email" id="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div> 
+        
+        <div class="row">
+          <div class="form-group col-6" name="for-password">
+            <label for="password">Password</label>
+            <input type="password"  class="form-control" name="password" id="password">
+          </div>
+
+          <div class="form-group col-6" name="for-repead-password">
+            <label for="password_verify">Repeat password</label>
+            <input type="password"  class="form-control" name="password_verify" id="password_verify">
+          </div>
+        </div>
+
+        <div class="jumbotron">
+          <h5 align="center">Investor datas</h5>
+
+          <div class="row form-group" name="name_investor">
+            <label for="name_investor">Name of Investor</label>
+            <input type="text"  class="form-control" name="name_investor" id="name_investor">
+          </div>
+
+          <label for="dropdownRiskButton" class="row">Risk Profile</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="risk_profile" id="conservative" value="CS">
+            <label class="form-check-label" for="conservative">Conservative</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="risk_profile" id="moderate" value="MT">
+            <label class="form-check-label" for="moderate">Moderate</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="risk_profile" id="dashing" value="DG">
+            <label class="form-check-label" for="dashing">Dashing</label>
+          </div>
+          <!-- <div class="row dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownRiskButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Risk Profile
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownRiskButton">
+              <a class="dropdown-item" href="#">Conservative</a>
+              <a class="dropdown-item" href="#">Moderate</a>
+              <a class="dropdown-item" href="#">Dashing</a>
+            </div>
+          </div> -->
+        </div>
+        
+        <button type="submit" class="btn btn-success btn-block col-12" align="center">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock%}

@@ -1,1 +1,31 @@
-<h1>LOGIN USUÁRIO</h1>
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <form action="{% url 'login_view' %}" method="POST" class="col-9">
+
+        {% csrf_token %}
+
+        <h2 class="row mt-4 mb-3 justify-content-center">Login</h3>
+        <div class="row justify-content-center">
+          <div class="form-group col-8" name="for-username">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="username">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="form-group col-8" name="for-password">
+            <label for="password">Password</label>
+            <input type="password"  class="form-control" name="password" id="password">
+            <small id="passwordHelp" class="form-text text-muted">We'll never share your account with anyone else.</small>
+          </div>
+        </div> 
+
+        <div class="row justify-content-center">
+          <button type="submit" class="btn btn-success btn-block col-8" align="center">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

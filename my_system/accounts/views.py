@@ -36,7 +36,7 @@ def create_view(request):
     return redirect('create_form')
 
   # Check if EMAIL already exists
-  if User.objects(email=email).exists():
+  if User.objects.filter(email=email).exists():
     messages.error(request, 'The email already exists')
 
     return redirect('create_form')
@@ -45,18 +45,19 @@ def create_view(request):
   user.save()
 
   Investor.objects.create(
-    name_investor = name_investor,
+    user = user,
+    name = name_investor,
     risk_profile = risk_profile
   )
 
-  print(
-    ['username={}, email={}, password={}, name_investor={}, risk_profile={}']
-    .format(username, email, password, name_investor, risk_profile))
+  # print(
+  #   ['username={}, email={}, password={}, name_investor={}, risk_profile={}']
+  #   .format(username, email, password, name_investor, risk_profile))
 
-  return render(request, 'accounts/login_form')
+  return render(request, 'my_wallet/home.html')
 
 def login_form(request):
-  return render(request, 'accounts/login_form')
+  return render(request, 'accounts/login_form.html')
 
 def login_view(request):
   if request.method != 'POST':
@@ -80,4 +81,5 @@ def login_view(request):
 def logout_view(request):
   logout(request)
 
-  return redirect('logout')
+  # return render(request, 'accounts/logout.html')
+  return redirect('home')
