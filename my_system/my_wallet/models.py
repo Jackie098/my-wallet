@@ -31,8 +31,12 @@ class Operation(models.Model):
     (SALE, 'sale'),
   ]
 
+  share_name = models.CharField(max_length=8)
   number_shares = models.IntegerField()
   unit_share_price = models.FloatField()
   tax = models.FloatField()
+
   operation_type = models.CharField(max_length=2, choices=OPTIONS)
   date = models.DateTimeField(auto_now_add=True)
+
+  investor = models.ForeignKey(Investor, on_delete=models.CASCADE)

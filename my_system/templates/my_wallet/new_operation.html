@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} New Operation {% endblock %}
+
+{% block content %} 
+
+  <div class="container h-100">
+    <div class="my-4">
+      <div class="row justify-content-center align-items-center">
+        <form action="{% url 'new_operation_view' %}" method="POST" class="col-9">
+
+          {% csrf_token %}
+
+          <h2 class="row mt-4 mb-3 justify-content-center">Register New Operation</h3>
+          <div class="row">
+            <div class="form-group col-6" name="for-share_name">
+              <label for="share_name">Share Name</label>
+              <input type="text" class="form-control" name="share_name" id="share_name" placeholder="Fill with the code of the 'share'">
+            </div>
+
+            <div class="form-group col-6" name="for-number_shares">
+              <label for="number_shares">Number Shares</label>
+              <input type="number"  class="form-control" name="number_shares" id="number_shares" placeholder="Ex: 1, 2, 3...">
+            </div>
+          </div> 
+          
+          <div class="row">
+            <div class="form-group col-6" name="for-unit_share_price">
+              <label for="unit_share_price">Unit Share Price</label>
+              <input type="number" step="0.01"  class="form-control" name="unit_share_price" id="unit_share_price" placeholder="What is the cost of one quota?">
+            </div>
+
+            <div class="form-group col-6" name="for-tax">
+              <label for="tax">Tax</label>
+              <input type="number" step="0.0001" class="form-control" name="tax" id="tax">
+            </div>
+          </div>
+
+          <label for="dropdownTypeOperation" class="row ml-1">Type Operation</label>
+          <div class="row ml-1 mb-5">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="type_operation" id="purchase" value="PS">
+              <label class="form-check-label" for="purchase">Purchase</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="type_operation" id="sale" value="SL">
+              <label class="form-check-label" for="sale">Sale</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block col-12" align="center">Register Operation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
