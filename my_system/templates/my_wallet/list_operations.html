@@ -1,0 +1,58 @@
+<!-- A PAGINA CARREGA :
+  1º UM FORM PARA APLICARO FILTRO
+    -> ESSE FORM MANDA UMA REQUISIÇÃO COM WHERE NO SELECT
+      E RENDERIZA ESTA MESMA PÁGINA (ISSO NA VIEW)
+  2º CARREGA TODAS AS OPERAÇÕES DO USUARIO -->
+
+{% extends 'base.html' %}
+
+{% block title %} List Operations {% endblock %}
+
+{% block content %} 
+  <div class="">
+    <h2 class="row mt-4 mb-3 justify-content-center">List Operations</h3>
+    <hr>
+    <form class="form-inline d-flex justify-content-center" method="POST" action="{% url 'list_operations' %}">
+
+      {% csrf_token %}
+
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="filter" class="sr-only">Filter by TAG action</label>
+        <input type="text" class="form-control" id="filter" placeholder="Filter by TAG action">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Filter</button>
+    </form>
+    <hr>
+  </div>
+
+  <div class="d-flex flex-column align-items-center">
+    {% for operation in operations %}
+      <div class="card mb-2 text-white bg-dark" style="width:55rem;">
+        <div class="card-header d-flex justify-content-between align-items-center"> 
+          <strong>{{operation.share_name}}</strong> 
+        
+          {% if operation.operation_type == 'PS' %}
+            <h5 class="text-success"> purchase </h5>
+          {% else %}
+            <h5 class="text-danger"> sell </h5>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <div class="d-flex ">
+            <label class="mr-3"> <strong>Unite Price:</strong> R$ {{operation.unit_share_price}} </label>
+            <label> <strong>Number of shares:</strong> {{operation.number_shares}} </label>
+          </div>
+
+          <div class="d-flex flex-column align-items-end">
+            <cite>Value Total</cite>
+            <h4>R$ {{operation.amount}}</h4>
+          </div>
+
+          <footer class="text-muted" style="font-size:14px;"> {{operation.date}} </footer>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}

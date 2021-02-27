@@ -68,5 +68,14 @@ def new_operation_view(request):
   return redirect('home')
 
 @login_required
-def list_same_share_operations_form(request):
-  pass
+def list_operations(request):
+  user = request.user
+  investor = Investor.objects.get(user=user)
+
+  operations = Operation.objects.filter(investor=investor)
+
+  context = {
+    'operations': operations
+  }
+
+  return render(request, 'my_wallet/list_operations.html', context=context)
