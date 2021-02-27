@@ -134,3 +134,5 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'assets')
+
+LOGIN_URL = 'login_form'

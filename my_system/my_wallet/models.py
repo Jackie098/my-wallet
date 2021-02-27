@@ -32,9 +32,11 @@ class Operation(models.Model):
   ]
 
   share_name = models.CharField(max_length=8)
+  trading_value = models.DecimalField(max_digits=6,decimal_places=2)
   number_shares = models.IntegerField()
-  unit_share_price = models.FloatField()
-  tax = models.FloatField()
+  unit_share_price = models.DecimalField(max_digits=6,decimal_places=2)
+  tax = models.DecimalField(max_digits=6,decimal_places=2)
+  amount = models.DecimalField(max_digits=6,decimal_places=2)
 
   operation_type = models.CharField(max_length=2, choices=OPTIONS)
   date = models.DateTimeField(auto_now_add=True)
