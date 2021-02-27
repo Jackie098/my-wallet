@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count, Avg, Sum
 from datetime import datetime
 
 from django.contrib.auth.models import User
@@ -7,12 +8,26 @@ from .models import Operation, Investor
 
 # Create your views here.
 def home(request):
+  if request.user.is_authenticated:
+    user = request.user
+    investor = Investor.objects.get(user=user)
 
-  #calculos
+    # Operations separate per SHARE_NAME, counting the instances, average and sum.
+    operations = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor)
+    # operations_purchased = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor, operation_type='PS')
+    # operations_selled = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor, operation_type='SL')
+    # TODO: Équivo a lógica atual, pois estou somando o histórioc de operaçoçes
+    # O correto seria somar as operações que estão abertas, baseado na carteira atual e na data
+    wallet = Operation.objects.filter(investor=investor, operation_type='PS').aggregate(sum=Sum('amount'))
+    context = {
+      "investor": investor,
+      "operations": operations,
+      "wallet": wallet,
+    }
 
-  #contexto
-
-  return render(request, 'my_wallet/home.html')
+    return render(request, 'my_wallet/home.html', context=context)
+  else:
+    return render(request, 'my_wallet/home.html')
 
 @login_required
 def new_operation_form(request):
@@ -72,7 +87,13 @@ def list_operations(request):
   user = request.user
   investor = Investor.objects.get(user=user)
 
-  operations = Operation.objects.filter(investor=investor)
+  # if method is POST, return the query filtered
+  if request.method == 'POST':
+    filtrate = request.POST['filtrate']
+
+    operations = Operation.objects.filter(investor=investor, share_name=filtrate)
+  else:
+    operations = Operation.objects.filter(investor=investor)
 
   context = {
     'operations': operations

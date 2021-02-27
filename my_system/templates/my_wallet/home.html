@@ -1,19 +1,61 @@
 {% extends 'base.html' %}
-<!-- <h1> -->
-  <!-- Se estiver logado -->
-    <!-- RESUMO DAS POSIÇÕES -->
-  <!-- Senão -->
-    <!-- BEM-VINDO,
-    FAÇA LOGIN PARA VER O RESUMO...
-    <button>Login</button>
-</h1> -->
+{% load static %}
 
 {% block title %} Home - Homebroker {% endblock %}
 
+<!-- {% block styles %}
+  <style>
+    img {
+      width: 125px;
+      height: 124px;
+      border-radius: 14px;
+    }
+  </style>
+{% endblock %} -->
+
 {% block content %} 
+<style>
+  img {
+    width: 155px;
+    border-radius: 14px;
+  }
+</style>
 {% if user.is_authenticated %}
   <div class="container my-4">
-    <h2>O caba ta conectado</h2>
+    <div class="card bg-dark text-light">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-column">
+            <h3 class="card-title">Investor Information</h3>
+            <label><strong class="mr-3">Nome:</strong> {{investor.name}} </label>
+            <label><strong class="mr-3">Risk Profile:</strong> 
+              {% if investor.risk_profile == 'CS' %}
+                <label class="text-primary">Conservate</label>
+              {% elif investor.risk_profile == 'MT' %}
+                <label class="text-warning">Moderate</label>
+              {% endif %} 
+            </label>
+
+            <label class="d-flex flex-column mt-4">
+              <strong class="mr-3">Total Invested:</strong> 
+              <h4 class="text-success">R$ {{wallet.sum}}</h4>
+            </label>
+          </div>
+          <div>
+            <img src="{% static 'img/iron-man.png' %}" alt="Imagem do usuário">
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2>2º OUTRO card com o resumo das operações</h2>
+    <ol>
+      {% for operation in operations %}
+        <li>{{operation.share_name}}, {{operation.dcount}}, {{operation.sum}}</li>
+      {% endfor %}
+    </ol>
+    <!-- {% for walletet in wallet %} -->
+      <h4>somatorio = {{wallet.sum}}</h4>
+    <!-- {% endfor %} -->
   </div>
 {% else %}
   <div class="container my-4">
