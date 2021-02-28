@@ -41,13 +41,15 @@ Tecnologias utilizadas no projeto.
 * O seu banco de dados deve estar sincronizado. Para isso, crie um banco de dados postgree chamado *homebroke*, atente-se para estar na porta *5432* e configure o restante das informações de acordo com o seu ambiente.
 * Assim que o banco de dados estiver conectado, insira o comando no terminal:
 > $ python manage.py migrate
+
 Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver algum problema, tente executar estes dois comandos a seguir no terminal:
 **1º**
 > $ python manage.py makemigrations
+
 **2º**
 > $ python manage.py migrate
 * Agora com o banco conectado e todas as tabelas criadas, inicie o servidor:
->    $ python manage.py runserver
+> $ python manage.py runserver
 
   Se estiver utilizando, certifique-se de estar com o ambiente virtual rodando e na mesma pasta do arquivo **manage.py**.
 
@@ -74,6 +76,7 @@ Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver
  
   - Sugestões: 
     - na HOME: Pode-se inserir gráficos como um dashoard.
+    - HOME: Formatar os dados de *average price*.
     - HOME: Os calculos foram feito com uma lógica errônea. Por exemplo: No *Sumary of Operations*, soma-se todas as instâncias por ação, mas a uma contradição aqui pois algumas ações tem operação de *comprado* e *vendido*, não se soma um valor comprado com o mesmo vendido.
     - Agregar mais informações para o *investidor* e/ou *usuário*
     - Adicionar as funcionalidades para alterar e apagar operações.
