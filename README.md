@@ -41,9 +41,11 @@ Tecnologias utilizadas no projeto.
 * O seu banco de dados deve estar sincronizado. Para isso, crie um banco de dados postgree chamado *homebroke*, atente-se para estar na porta *5432* e configure o restante das informações de acordo com o seu ambiente.
 * Assim que o banco de dados estiver conectado, insira o comando no terminal:
 > $ python manage.py migrate
-  Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver algum problema, tente executar estes dois comandos a seguir no terminal:
-  > $ python manage.py makemigrations
-  > $ python manage.py migrate
+Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver algum problema, tente executar estes dois comandos a seguir no terminal:
+**1º**
+> $ python manage.py makemigrations
+**2º**
+> $ python manage.py migrate
 * Agora com o banco conectado e todas as tabelas criadas, inicie o servidor:
 >    $ python manage.py runserver
 
@@ -52,28 +54,35 @@ Tecnologias utilizadas no projeto.
 ## Como usar
  
  Ao acessar o link do servidor, você verá a página *HOME* para usuários não logados.
- ![Cadastro de usuário](https://github.com/Jackie098/django-example/blob/master/images-readme/cadastro-usuario.png)
+ ![Home para usuários não logados](https://github.com/Jackie098/my-wallet/blob/master/images-readme/01.home_without_login.png)
 
- Com uma conta já criada, faça *login*.
- ![Usuário logado](https://github.com/Jackie098/django-example/blob/master/images-readme/usuario-logado.png)
+ Crie uma conta na respectiva sessão. Insira dados relativos a usuário e investidor.
+ ![Criar conta](https://github.com/Jackie098/my-wallet/blob/master/images-readme/02.new_account_form.png)
 
- Após o *login*, observe que os botões ao canto superior direito mudaram e no canto superior esquerdo apareceu a opção de criar postagem.
- ![Cadastro de usuário](https://github.com/Jackie098/django-example/blob/master/images-readme/criando-postagem.png)
+ Em seguida, faça *LOGIN* com os dados de usuário cadastrados.
+ ![Login de usuário](https://github.com/Jackie098/my-wallet/blob/master/images-readme/03.login_view.png)
 
- *Foi adicionado mais um link para visualização das postagems*
+ Agora podemos visualizar a *HOME* para usuários logados. Observe as novas opções liberadas no *nav-bar* tanto quanto
+ o resumo das operações e informação do investidor. ![Home para usuários logados](https://github.com/Jackie098/my-wallet/blob/master/images-readme/04.home_logged.png)
+
+ Com o usuário logado, registre suas operações e especifique se é de compra ou venda. ![Registro de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/05.new_operation.png)
+
+ Você também pode visualizar suas operações (o histórico delas). ![Histórico de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/06.history_operations.png)
+
  
 ## Atualizações
  
   - Sugestões: 
-    - Adicionar funcionalidades na sessão HOME
-    - Pode-se exibir os posts de cada aluno (como um feed ou um fórum)
-    - Melhorar a classe POST: Atribuir outros tipos de campos
-    - Criar um APP e/ou classe para a interação de vários alunos no feed (como numa rede social)
+    - na HOME: Pode-se inserir gráficos como um dashoard.
+    - HOME: Os calculos foram feito com uma lógica errônea. Por exemplo: No *Sumary of Operations*, soma-se todas as instâncias por ação, mas a uma contradição aqui pois algumas ações tem operação de *comprado* e *vendido*, não se soma um valor comprado com o mesmo vendido.
+    - Agregar mais informações para o *investidor* e/ou *usuário*
+    - Adicionar as funcionalidades para alterar e apagar operações.
+    - Criar uma página "pública" para rankear investidores seja por quantidade de operações, maiores valores investidos, etc.
  
  
 ## Links
  
-  - Repositório: https://github.com/Jackie098/django-example
+  - Repositório: https://github.com/Jackie098/my-wallet
     - Em caso de dúvidas ou sugestões, sinta-se livre para entrar em contato e/ou solicitar **pull requests**.
  
  
