@@ -16,8 +16,13 @@
 {% block content %} 
 <style>
   img {
-    width: 155px;
+    width: 165px;
     border-radius: 14px;
+  }
+
+  th,td {
+    text-align: center; 
+    vertical-align: middle;
   }
 </style>
 {% if user.is_authenticated %}
@@ -28,11 +33,14 @@
           <div class="d-flex flex-column">
             <h3 class="card-title">Investor Information</h3>
             <label><strong class="mr-3">Nome:</strong> {{investor.name}} </label>
+            <label><strong class="mr-3">Email:</strong> {{user.email}} </label>
             <label><strong class="mr-3">Risk Profile:</strong> 
               {% if investor.risk_profile == 'CS' %}
                 <label class="text-primary">Conservate</label>
               {% elif investor.risk_profile == 'MT' %}
                 <label class="text-warning">Moderate</label>
+              {% elif investor.risk_profile == 'DG' %}
+              <label class="text-danger">Dashing</label>
               {% endif %} 
             </label>
 
@@ -47,15 +55,34 @@
         </div>
       </div>
     </div>
-    <h2>2º OUTRO card com o resumo das operações</h2>
-    <ol>
-      {% for operation in operations %}
-        <li>{{operation.share_name}}, {{operation.dcount}}, {{operation.sum}}</li>
-      {% endfor %}
-    </ol>
-    <!-- {% for walletet in wallet %} -->
-      <h4>somatorio = {{wallet.sum}}</h4>
-    <!-- {% endfor %} -->
+
+    <div class="card border-dark mt-3">
+      <div class="card-header">Sumary of Operations</div>
+      <div class="card-body">
+        <div class="">
+          <table class="table table-hover">
+            <thead>
+              <tr class="">
+                <th scope="col">Nama Share</th>
+                <th scope="col">Number Shares</th>
+                <th scope="col">Average Price</th>
+                <th scope="col">Total Moved</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for operation in operations %}
+                <tr>
+                  <td>{{operation.share_name}}</td>
+                  <td>{{operation.sum_shares}}</td>
+                  <td class="text-info">R$ {{ operation.avg }} </td>
+                  <td class="text-secondary">R$ {{operation.sum}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 {% else %}
   <div class="container my-4">

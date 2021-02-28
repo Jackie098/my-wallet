@@ -13,7 +13,7 @@ def home(request):
     investor = Investor.objects.get(user=user)
 
     # Operations separate per SHARE_NAME, counting the instances, average and sum.
-    operations = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor)
+    operations = Operation.objects.values('share_name').annotate(sum_shares=Sum('number_shares'), avg=Avg('unit_share_price'), sum=Sum('amount')).filter(investor=investor)
     # operations_purchased = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor, operation_type='PS')
     # operations_selled = Operation.objects.values('share_name').annotate(dcount=Count('share_name'), sum=Sum('amount')).filter(investor=investor, operation_type='SL')
     # TODO: Équivo a lógica atual, pois estou somando o histórioc de operaçoçes
