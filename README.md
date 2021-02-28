@@ -38,7 +38,7 @@ Tecnologias utilizadas no projeto.
 ## Começando
  
 * Considere os passos anteriores na sessão **PIP**.
-* O seu banco de dados deve estar sincronizado. Para isso, crie um banco de dados postgree chamado *homebroke*, atente-se para estar na porta *5432* e configure o restante das informações de acordo com o seu ambiente.
+* O seu banco de dados deve estar sincronizado. Para isso, crie um banco de dados **Postgree** chamado *homebroke*, atente-se para estar na porta *5432* e configure o restante das informações de acordo com o seu ambiente.
 * Assim que o banco de dados estiver conectado, insira o comando no terminal:
 > $ python manage.py migrate
 
@@ -51,7 +51,7 @@ Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver
 * Agora com o banco conectado e todas as tabelas criadas, inicie o servidor:
 > $ python manage.py runserver
 
-  Se estiver utilizando, certifique-se de estar com o ambiente virtual rodando e na mesma pasta do arquivo **manage.py**.
+Se estiver utilizando, certifique-se de estar com o ambiente virtual rodando e na mesma pasta do arquivo **manage.py**.
 
 ## Como usar
  
