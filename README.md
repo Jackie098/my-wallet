@@ -1,11 +1,11 @@
  ## MyWallet
  
-Projeto final de uma disciplina feita com Django. Neste projeto o desafio foi criar algo parecido com uma carteira de operações. Onde o usuário insere suas operações e pode visualizar o resumo da sua carteira de ações e histórico de operações.
+Final project of a course made with Django. In this project, the challenge was to create something similar to a portfolio of operations. Where the user enters his trades and can view the summary of his stock portfolio and trade history.
 
 
-## Tecnologias 
+## Technologies 
  
-Tecnologias utilizadas no projeto.
+Technologies used in the project.  
  
 * Python version  3.8.5
 * Django version 3.1.4
@@ -20,75 +20,78 @@ Tecnologias utilizadas no projeto.
 * Github
  
 ## Pip
- Você vai precisar de algumas libs para rodar o projeto. Os requerimentos estarão no arquivo [requeriments.txt](https://github.com/Jackie098/django-example/blob/master/requeriments.txt).
+ You will need some libs to run the project. Applications will be on file [requeriments.txt](https://github.com/Jackie098/django-example/blob/master/requeriments.txt).
 
- Para instalar os requerimentos, basta rodar no terminal:
+ To install the requirements, just run in the terminal:
  > $ pip install -r requeriments.txt
   
-  ATENÇÃO: Considere estar na mesma pasta do 'requeriments.txt'.
+  ATTENTION: Consider being in the same folder as 'requirements.txt'.
 
-  Se você usa ambiente virtual (o recomendado):
-  1. Instale o ambiente virtual:
-  > $ python3 -m venv myvenv
-  2. Inicie o ambiente. Se atente em colocar o caminho correto do arquivo:
-  > $ source ./myvenv/bin/activate
-  3. Depois de clonar o repositório, instale as dependências com o arquivo 'requeriments.txt':
-  > $ pip install -r requeriments.txt
+  If you use virtual environment (recommended):  
+   1. Install the virtual environment:  
+   > $python3 -m venv myvenv
+   2. Start the environment. Be careful to put the correct path to the file:  
+   > $ source ./myvenv/bin/activate
+   3. After cloning the repository, install the dependencies with the file 'requirements.txt':  
+   > $ pip install -r requirements.txt
  
-## Começando
+## Starting
  
-* Considere os passos anteriores na sessão **PIP**.
-* O seu banco de dados deve estar sincronizado. Para isso, crie um banco de dados **Postgree** chamado *homebroke*, atente-se para estar na porta *5432* e configure o restante das informações de acordo com o seu ambiente.
-* Assim que o banco de dados estiver conectado, insira o comando no terminal:
+* Consider the previous steps in the **PIP** session.
+* Your database must be synchronized. To do this, create a **Postgree** database called *homebroke*, make sure it is on port *5432* and configure the rest of the information according to your environment.
+* Once the database is connected, enter the command in the terminal:  
 > $ python manage.py migrate
 
-Você deve estar no mesmo nível do diretório do arquivo *manage.py*. Se houver algum problema, tente executar estes dois comandos a seguir no terminal:
+  You must be at the same directory level as the *manage.py* file. If there is a problem, try running these two commands below in the terminal:  
 **1º**
-> $ python manage.py makemigrations
+> $ python manage.py makemigrations  
 
 **2º**
 > $ python manage.py migrate
-* Agora com o banco conectado e todas as tabelas criadas, inicie o servidor:
+
+* Now with the database connected and all the tables created, start the server:
 > $ python manage.py runserver
 
-Se estiver utilizando, certifique-se de estar com o ambiente virtual rodando e na mesma pasta do arquivo **manage.py**.
+If you are using it, make sure you have the virtual environment running and in the same folder as the **manage.py** file.
 
-## Como usar
+## How to use
  
- Ao acessar o link do servidor, você verá a página *HOME* para usuários não logados.
+ Upon accessing the server link, you will see the *HOME* page for unlogged in users.  
  ![Home para usuários não logados](https://github.com/Jackie098/my-wallet/blob/master/images-readme/01.home_without_login.png)
 
- Crie uma conta na respectiva sessão. Insira dados relativos a usuário e investidor.
+ Create an account in the respective session. Enter user and investor data.  
  ![Criar conta](https://github.com/Jackie098/my-wallet/blob/master/images-readme/02.new_account_form.png)
 
- Em seguida, faça *LOGIN* com os dados de usuário cadastrados.
+ Then, *LOGIN* with the registered user data.  
  ![Login de usuário](https://github.com/Jackie098/my-wallet/blob/master/images-readme/03.login_view.png)
 
- Agora podemos visualizar a *HOME* para usuários logados. Observe as novas opções liberadas no *nav-bar* tanto quanto
- o resumo das operações e informação do investidor. ![Home para usuários logados](https://github.com/Jackie098/my-wallet/blob/master/images-readme/04.home_logged.png)
+ Now we can view *HOME* for logged in users. Note the new options released in *nav-bar* as much as the summary of operations and investor information.  
+ ![Home para usuários logados](https://github.com/Jackie098/my-wallet/blob/master/images-readme/04.home_logged.png)
 
- Com o usuário logado, registre suas operações e especifique se é de compra ou venda. ![Registro de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/05.new_operation.png)
+ With the user logged in, register your operations and specify whether it is a purchase or sale.  
+ ![Registro de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/05.new_operation.png)
 
- Você também pode visualizar suas operações (o histórico delas). ![Histórico de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/06.history_operations.png)
+ You can also view your operations (their history).  
+ ![Histórico de Operações](https://github.com/Jackie098/my-wallet/blob/master/images-readme/06.history_operations.png)
 
  
-## Atualizações
+## Updates
  
-  - Sugestões: 
-    - na HOME: Pode-se inserir gráficos como um dashoard.
-    - HOME: Formatar os dados de *average price*.
-    - HOME: Os calculos foram feito com uma lógica errônea. Por exemplo: No *Sumary of Operations*, soma-se todas as instâncias por ação, mas a uma contradição aqui pois algumas ações tem operação de *comprado* e *vendido*, não se soma um valor comprado com o mesmo vendido.
-    - Agregar mais informações para o *investidor* e/ou *usuário*
-    - Adicionar as funcionalidades para alterar e apagar operações.
-    - Criar uma página "pública" para rankear investidores seja por quantidade de operações, maiores valores investidos, etc.
+  - Suggestions:
+     - in HOME: You can insert graphics as a dashoard.
+     - HOME: Format *average price* data.
+     - HOME: The calculations were made with an erroneous logic. For example: In *Summary of Operations*, all instances per action are added, but there is a contradiction here as some actions have *bought* and *sold* operations, there is no added value bought with the same sold.
+     - Add more information for *investor* and/or *user*
+     - Add functionality to change and delete operations.
+     - Create a "public" page to rank investors by number of operations, higher amounts invested, etc.
  
  
 ## Links
  
-  - Repositório: https://github.com/Jackie098/my-wallet
-    - Em caso de dúvidas ou sugestões, sinta-se livre para entrar em contato e/ou solicitar **pull requests**.
+  - Repository: https://github.com/Jackie098/my-wallet
+    - In case of doubts or suggestions, feel free to get in touch and/or request **pull requests**. 
  
  
-## Autor
+## Creator
  
 * **Carlos Augusto M**: @Jackie098 (https://github.com/Jackie098)
